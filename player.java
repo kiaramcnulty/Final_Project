@@ -52,6 +52,4 @@ public class player
 	{
 		return name + ": " + hits/(double)attempts; // need to round off to 3 decimals places
 	}
-	
-	
 }

@@ -28,7 +28,14 @@ public class playerGroupRunner
 					String[] stats = stat.split("");
 					String n = stats[0];
 					String h = stats[1];
-					n.addStats(h); // not allowed? Could do for loop checking each player in list for match
+					//n.addStats(h); // not allowed? Could do for loop checking each player in list for match
+					for (int i = 0; i < listOfPlayers.size(); i++)
+					{
+						if (listOfPlayers.get(i).equals(n))
+						{
+							listOfPlayers.get(i).addStats(h);
+						}
+					}
 				}
 			}
 		}
@@ -36,6 +43,10 @@ public class playerGroupRunner
 		for (player p : listOfPlayers)
 		{
 			System.out.println(p);
+		}
+		for (int i = 0; i < listOfPlayers.size(); i++)
+		{
+			System.out.println(listOfPlayers.get(i));
 		}
 	}
 }
