@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class playerGroupRunner
 {
@@ -9,13 +10,14 @@ public class playerGroupRunner
 		int numP = kb.nextInt();
 		String[] players = new String[numP];
 		
+		ArrayList<player> listOfPlayers = new ArrayList<player>();
+		
 		for (int i = 0; i < numP; i++)
 		{
 			System.out.println("Enter a letter to represent one of the players: "); //or #?
-			players[i] = kb.next();
+			String name = kb.next();
+			listOfPlayers.add(new player(name));
 		}
-		
-		playerGroup listOfPlayers = new playerGroup(players);
 		
 		String stat = "";
 		while (!(stat.equals("done")))
@@ -23,17 +25,18 @@ public class playerGroupRunner
 			System.out.println("Enter stat: ");
 			stat = kb.next();
 			{
-				while (!(stat.equals("done")))
+				if (!(stat.equals("done")))
 				{
 					String[] stats = stat.split("");
-					String n = stats[0];
-					String h = stats[1];
-					//n.addStats(h); // not allowed? Could do for loop checking each player in list for match
+					String p = stats[0];
+					String n = stats[1];
+					String h = stats[2];
+	
 					for (int i = 0; i < listOfPlayers.size(); i++)
 					{
-						if (listOfPlayers.get(i).equals(n))
+						if (listOfPlayers.get(i).getName().equals(n))
 						{
-							listOfPlayers.get(i).addStats(h);
+							listOfPlayers.get(i).addStats(p, h);
 						}
 					}
 				}
@@ -43,10 +46,6 @@ public class playerGroupRunner
 		for (player p : listOfPlayers)
 		{
 			System.out.println(p);
-		}
-		for (int i = 0; i < listOfPlayers.size(); i++)
-		{
-			System.out.println(listOfPlayers.get(i));
 		}
 	}
 }

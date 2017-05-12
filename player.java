@@ -1,55 +1,63 @@
 public class player
 {
 	private String name;
-	private int hits;
-	private int attempts;
+	private int serveAtt;
+	private int transAtt;
+	private int serveHits;
+	private int transHits;
 	
 	public player()
 	{
 		this.name = "";
-		this.hits = 0;
-		this.attempts = 0;
+
 	}
 	public player(String n)
 	{
 		this.name = n;
-		this.hits = 0;
-		this.attempts = 0;
 	}
 	
 	public String getName()
 	{
 		return name;
 	}
-	public int getHits()
+	
+	public void addStats(String sOrT, String kOrE)
 	{
-		return hits;
-	}
-	public int getAttempts()
-	{
-		return attempts;
+		if (sOrT.equals("s"))
+		{
+			serveAtt+=1;
+			if (kOrE.equals("k"))
+			{
+				serveHits += 1;
+
+			}
+			else if (kOrE.equals("e"))
+			{
+				serveHits -= 1;
+			}
+		}
+		else if (sOrT.equals("t"))
+		{
+			transAtt+=1;
+			if (kOrE.equals("k"))
+			{
+				transHits += 1;
+
+			}
+			else if (kOrE.equals("e"))
+			{
+				transHits -= 1;
+			}
+		}
+
 	}
 	
-	public void addStats(String kOrE)
-	{
-		if (kOrE.equals("k"));
-		{
-			hits += 1;
-			attempts += 1;
-		}
-		if (kOrE.equals("e"));
-		{
-			hits -= 1;
-			attempts += 1;
-		}
-		if (kOrE.equals("w"));
-		{
-			attempts += 1;
-		}
-	}
 	
 	public String toString()
 	{
-		return name + ": " + hits/(double)attempts; // need to round off to 3 decimals places
+		return name + ": " +
+						"\nHitting %: " + (serveHits+transHits)/(double)(serveAtt + transAtt) +
+						"\nHitting % S/R: " + serveHits/(double)serveAtt + 
+						"\nHitting % Trans: " + transHits/(double)transAtt; // need to round off to 3 decimals places
 	}
 }
