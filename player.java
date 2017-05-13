@@ -32,16 +32,16 @@ public class player
 			else if (kOrE.equals("e"))
 			{
 				serveHits -= 1;
-				if (type.equals("b"))
+				if (type != null && type.equals("b"))
 				{
 					blockErr +=1;
 				}
-				else if (type.equals("h"))
+				else if (type != null && type.equals("h"))
 				{
 					hitErr +=1;
 				}
 			}
-			else if (kOrE.equals("w"))
+			else if (type != null && kOrE.equals("w"))
 			{
 				intType = Integer.parseInt(type);
 				washPoints += intType;
@@ -59,16 +59,16 @@ public class player
 			else if (kOrE.equals("e"))
 			{
 				transHits -= 1;
-				if (type.equals("b"))
+				if (type != null && type.equals("b"))
 				{
 					blockErr +=1;
 				}
-				else if (type.equals("h"))
+				else if (type != null && type.equals("h"))
 				{
 					hitErr +=1;
 				}
 			}
-			else if (kOrE.equals("w"))
+			else if (type != null && kOrE.equals("w"))
 			{
 				intType = Integer.parseInt(type);
 				washPoints += intType;
@@ -86,7 +86,7 @@ public class player
 						"\n\tHitting % S/R: " + serveHits/(double)serveAtt + 
 						"\n\tHitting % Trans: " + transHits/(double)transAtt +
 						"\n\t% of Errors by block: " + blockErr/(double)(blockErr + hitErr) +
-						"\n\t% of Errors by hit: " + hitErr/(double)(blockErr + hitErr); + 
-						"\n\tWash %: " + washPoints/(double)washTotal; // need to round off to 3 decimals places
+						"\n\t% of Errors by hit: " + hitErr/(double)(blockErr + hitErr) + 
+						"\n\tWash %: "+washPoints/(double)washTotal; // need to round off to 3 decimals places
 	}
 }
