@@ -31,12 +31,17 @@ public class playerGroupRunner
 					String p = stats[0];
 					String n = stats[1];
 					String h = stats[2];
+					String t = null;
+					if (stats.length == 4)
+					{
+						t = stats[3];
+					}
 	
 					for (int i = 0; i < listOfPlayers.size(); i++)
 					{
 						if (listOfPlayers.get(i).getName().equals(n))
 						{
-							listOfPlayers.get(i).addStats(p, h);
+							listOfPlayers.get(i).addStats(p, h, t);
 						}
 					}
 				}

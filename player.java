@@ -1,15 +1,13 @@
+import jdk.management.resource.internal.inst.WindowsAsynchronousFileChannelImplRMHooks;
+
 public class player
 {
 	private String name;
-	private int serveAtt;
-	private int transAtt;
-	private int serveHits;
-	private int transHits;
+	private int serveAtt, transAtt, serveHits, transHits, blockErr, hitErr, intType, washPoints, washTotal;
 	
 	public player()
 	{
 		this.name = "";
-
 	}
 	public player(String n)
 	{
@@ -21,7 +19,7 @@ public class player
 		return name;
 	}
 	
-	public void addStats(String sOrT, String kOrE)
+	public void addStats(String sOrT, String kOrE, String type)
 	{
 		if (sOrT.equals("s"))
 		{
@@ -34,6 +32,20 @@ public class player
 			else if (kOrE.equals("e"))
 			{
 				serveHits -= 1;
+				if (type.equals("b"))
+				{
+					blockErr +=1;
+				}
+				else if (type.equals("h"))
+				{
+					hitErr +=1;
+				}
+			}
+			else if (kOrE.equals("w"))
+			{
+				intType = Integer.parseInt(type);
+				washPoints += intType;
+				washTotal += 3;
 			}
 		}
 		else if (sOrT.equals("t"))
@@ -47,6 +59,20 @@ public class player
 			else if (kOrE.equals("e"))
 			{
 				transHits -= 1;
+				if (type.equals("b"))
+				{
+					blockErr +=1;
+				}
+				else if (type.equals("h"))
+				{
+					hitErr +=1;
+				}
+			}
+			else if (kOrE.equals("w"))
+			{
+				intType = Integer.parseInt(type);
+				washPoints += intType;
+				washTotal += 3;
 			}
 		}
 
@@ -56,8 +82,11 @@ public class player
 	public String toString()
 	{
 		return name + ": " +
-						"\nHitting %: " + (serveHits+transHits)/(double)(serveAtt + transAtt) +
-						"\nHitting % S/R: " + serveHits/(double)serveAtt + 
-						"\nHitting % Trans: " + transHits/(double)transAtt; // need to round off to 3 decimals places
+						"\n\tHitting %: " + (serveHits+transHits)/(double)(serveAtt + transAtt) +
+						"\n\tHitting % S/R: " + serveHits/(double)serveAtt + 
+						"\n\tHitting % Trans: " + transHits/(double)transAtt +
+						"\n\t% of Errors by block: " + blockErr/(double)(blockErr + hitErr) +
+						"\n\t% of Errors by hit: " + hitErr/(double)(blockErr + hitErr); + 
+						"\n\tWash %: " + washPoints/(double)washTotal; // need to round off to 3 decimals places
 	}
 }
