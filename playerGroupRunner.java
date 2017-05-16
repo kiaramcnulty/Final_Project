@@ -14,7 +14,7 @@ public class playerGroupRunner
 		
 		for (int i = 0; i < numP; i++)
 		{
-			System.out.println("Enter a letter to represent one of the players: "); //or #?
+			System.out.println("Enter a letter or single digit # to represent one of the players: "); //or #?
 			String name = kb.next();
 			listOfPlayers.add(new player(name));
 		}
@@ -28,11 +28,23 @@ public class playerGroupRunner
 				if (!(stat.equals("done")))
 				{
 					String[] stats = stat.split("");
-					String p = stats[0];
-					String n = stats[1];
-					String h = stats[2];
+					String p = null;
+					String n = null;
+					String h = null;
 					String t = null;
-					if (stats.length == 4)
+					if (stats.length >= 1)
+					{
+						p = stats[0];
+					}
+					if (stats.length >= 2)
+					{
+						n = stats[1];
+					}
+					if (stats.length >= 3)
+					{
+						h = stats[2];
+					}
+					if (stats.length >= 4)
 					{
 						t = stats[3];
 					}

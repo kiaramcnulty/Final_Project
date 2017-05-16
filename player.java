@@ -1,5 +1,3 @@
-import jdk.management.resource.internal.inst.WindowsAsynchronousFileChannelImplRMHooks;
-
 public class player
 {
 	private String name;
@@ -41,7 +39,7 @@ public class player
 					hitErr +=1;
 				}
 			}
-			else if (type != null && kOrE.equals("w"))
+			else if (kOrE.equals("w"))
 			{
 				intType = Integer.parseInt(type);
 				washPoints += intType;
@@ -82,11 +80,11 @@ public class player
 	public String toString()
 	{
 		return name + ": " +
-						"\n\tHitting %: " + (serveHits+transHits)/(double)(serveAtt + transAtt) +
-						"\n\tHitting % S/R: " + serveHits/(double)serveAtt + 
-						"\n\tHitting % Trans: " + transHits/(double)transAtt +
-						"\n\t% of Errors by block: " + blockErr/(double)(blockErr + hitErr) +
-						"\n\t% of Errors by hit: " + hitErr/(double)(blockErr + hitErr) + 
-						"\n\tWash %: "+washPoints/(double)washTotal; // need to round off to 3 decimals places
+						"\n\tHitting %: " + (int)(1000*((serveHits+transHits)/(double)(serveAtt + transAtt)))/(double)1000 +
+						"\n\tHitting % S/R: " + (int)(1000*(serveHits/(double)serveAtt))/(double)1000 + 
+						"\n\tHitting % Trans: " + (int)(1000*(transHits/(double)transAtt))/(double)1000 +
+						"\n\t% of Errors by block: " + (int)(1000*(blockErr/(double)(blockErr + hitErr)))/(double)1000 +
+						"\n\t% of Errors by hit: " + (int)(1000*(hitErr/(double)(blockErr + hitErr)))/(double)1000 + 
+						"\n\tWash %: "+ (int)(1000*(washPoints/(double)washTotal))/(double)1000;
 	}
 }
