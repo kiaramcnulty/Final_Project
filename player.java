@@ -76,6 +76,11 @@ public class player
 
 	}
 	
+	public void resetStats()
+	{
+		serveAtt = transAtt = serveHits = transHits = blockErr = hitErr = intType = washPoints = washTotal = 0;
+	}
+	
 	
 	public String toString()
 	{
