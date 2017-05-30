@@ -16,6 +16,23 @@ public class player
 	{
 		return name;
 	}
+
+	public int getServeHits()
+	{
+		return serveHits;
+	}
+	public int getServeAtt()
+	{
+		return serveAtt;
+	}
+	public int getTransHits()
+	{
+		return transHits();
+	}
+	public int getTransAtt()
+	{
+		return transAtt();
+	}
 	
 	public void addStats(String sOrT, String kOrE, String type)
 	{

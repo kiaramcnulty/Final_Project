@@ -75,6 +75,26 @@ public class playerGroupRunner
 				}
 			}
 		}
+
+		int totalServeHits = 0;
+		int totalServeAtt = 0;
+		int totalTransHits = 0;
+		int totalTransAtt = 0;
+
+		for (player p : listOfPlayers)
+		{
+			totalServeHits += p.getServeHits();
+			totalServeAtt += p.getServeAtt();
+			totalTransHits += p.getTransHits();
+			totalTransAtt += p.getTransAtt();
+		}
+
+		System.out.println();
+		System.out.println();
+		System.out.println("Team Hitting %: " + (int)(1000*((totalServeHits+totalTransHits)/(double)(totalServeAtt + totalTransAtt)))/(double)1000);
+		System.out.println("Team Hitting % S/R: " + (int)(1000*(totalServeHits/(double)totalServeAtt))/(double)1000);
+		System.out.println("Hitting % Trans: " + (int)(1000*(totalTransHits/(double)totalTransAtt))/(double)1000);
+		System.out.println();
 	
 		for (player p : listOfPlayers)
 		{
@@ -101,6 +121,12 @@ public class playerGroupRunner
 				}
 				statPlayers();
 			}
+		}
+		else
+		{
+			System.out.println();
+			System.out.println();
+			System.out.println();
 		}
 	}
 }
