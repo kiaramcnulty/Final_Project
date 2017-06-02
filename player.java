@@ -27,11 +27,27 @@ public class player
 	}
 	public int getTransHits()
 	{
-		return transHits();
+		return transHits;
 	}
 	public int getTransAtt()
 	{
-		return transAtt();
+		return transAtt;
+	}
+	public int getBlockErr()
+	{
+		return blockErr;
+	}
+	public int getHitErr()
+	{
+		return hitErr;
+	}
+	public int getWashPoints()
+	{
+		return washPoints;
+	}
+	public int getWashTotal()
+	{
+		return washTotal;
 	}
 	
 	public void addStats(String sOrT, String kOrE, String type)
@@ -90,14 +106,12 @@ public class player
 				washTotal += 3;
 			}
 		}
-
 	}
 	
 	public void resetStats()
 	{
 		serveAtt = transAtt = serveHits = transHits = blockErr = hitErr = intType = washPoints = washTotal = 0;
 	}
-	
 	
 	public String toString()
 	{

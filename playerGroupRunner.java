@@ -80,6 +80,10 @@ public class playerGroupRunner
 		int totalServeAtt = 0;
 		int totalTransHits = 0;
 		int totalTransAtt = 0;
+		int totalBlockErr = 0;
+		int totalHitErr = 0;
+		int totalWashPoints = 0;
+		int totalWashTotal = 0;
 
 		for (player p : listOfPlayers)
 		{
@@ -87,6 +91,10 @@ public class playerGroupRunner
 			totalServeAtt += p.getServeAtt();
 			totalTransHits += p.getTransHits();
 			totalTransAtt += p.getTransAtt();
+			totalBlockErr += p.getBlockErr();
+			totalHitErr += p.getHitErr();
+			totalWashPoints += p.getWashPoints();
+			totalWashTotal += p.getWashTotal();
 		}
 
 		System.out.println();
@@ -94,6 +102,9 @@ public class playerGroupRunner
 		System.out.println("Team Hitting %: " + (int)(1000*((totalServeHits+totalTransHits)/(double)(totalServeAtt + totalTransAtt)))/(double)1000);
 		System.out.println("Team Hitting % S/R: " + (int)(1000*(totalServeHits/(double)totalServeAtt))/(double)1000);
 		System.out.println("Hitting % Trans: " + (int)(1000*(totalTransHits/(double)totalTransAtt))/(double)1000);
+		System.out.println("% of Team Errors by block: " + (int)(1000*(totalBlockErr/(double)(totalBlockErr + totalHitErr)))/(double)1000);
+		System.out.println("% of Team Errors by hit: " + (int)(1000*(totalHitErr/(double)(totalBlockErr + totalHitErr)))/(double)1000); 
+		System.out.println("Team Wash %: " + (int)(1000*(totalWashPoints/(double)totalWashTotal))/(double)1000);
 		System.out.println();
 	
 		for (player p : listOfPlayers)
@@ -109,7 +120,7 @@ public class playerGroupRunner
 		{
 			System.out.println("Would you like to reset the data? 'y' or 'n'");
 			String reset = kb.next();
-			if (reset.equals('n'))
+			if (reset.equals("n"))
 			{
 				statPlayers();
 			}
