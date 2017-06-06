@@ -7,7 +7,7 @@ public class playerGroupRunner
 	
 	public static void main(String[]args)
 	{
-		System.out.println("How many players will you be statting?");
+		/*System.out.println("How many players will you be statting?");
 		int numP = kb.nextInt();
 		
 		int i = 0;
@@ -29,7 +29,14 @@ public class playerGroupRunner
 				listOfPlayers.add(new player(name));
 				i++;
 			}
-		}
+		}*/
+		System.out.println("first character: 't' or 's' for serve receive or transition");
+		System.out.println("second character: unique letter or single digit number to represent player");
+		System.out.println("third character: 'k' or 'a' or 'e' for kill, attempt, error");
+		System.out.println("fourth character (only if attempt or error): 1, 2, 3 for quality of attempt; 'b' or 'h' for error by block or hit");
+		System.out.println("enter 'done' when complete");
+		System.out.println("Example: 'tkeb', 'sck', 's5w2', 'done'");
+		System.out.println();
 		statPlayers();
 	}
 	
@@ -64,13 +71,23 @@ public class playerGroupRunner
 					{
 						t = stats[3];
 					}
+					
+					boolean added = false;
+					int currentSize = listOfPlayers.size();
 	
-					for (int i = 0; i < listOfPlayers.size(); i++)
+					for (int i = 0; i < currentSize; i++)
 					{
 						if (listOfPlayers.get(i).getName().equals(n))
 						{
 							listOfPlayers.get(i).addStats(p, h, t);
+							added = true;
 						}
+					}
+					if (!added)
+					{
+						listOfPlayers.add(new player(n));
+						listOfPlayers.get(currentSize).addStats(p, h, t);
+						
 					}
 				}
 			}

@@ -72,7 +72,7 @@ public class player
 					hitErr +=1;
 				}
 			}
-			else if (kOrE.equals("w"))
+			else if (kOrE.equals("a"))
 			{
 				intType = Integer.parseInt(type);
 				washPoints += intType;
@@ -99,7 +99,7 @@ public class player
 					hitErr +=1;
 				}
 			}
-			else if (type != null && kOrE.equals("w"))
+			else if (type != null && kOrE.equals("a"))
 			{
 				intType = Integer.parseInt(type);
 				washPoints += intType;
